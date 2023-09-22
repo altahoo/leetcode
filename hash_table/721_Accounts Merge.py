@@ -8,27 +8,30 @@
 
 class Solution:
     def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
-        email_to_account = collections.defaultdict(list)
+        visited = set()
+        email_to_accounts = collections.defaultdict(set)
         for i, account in enumerate(accounts):
             for email in account[1:]:
-                email_to_account[email].append(i)
-        visited = set()
+                email_to_accounts[email].add(i)
+        
         result = []
-
         for i in range(len(accounts)):
             if i in visited:
                 continue
             queue = collections.deque([i])
+            name = accounts[i][0]
             emails = set()
             while queue:
-                cur_account = queue.popleft()
-                visited.add(cur_account)
-                for email in accounts[cur_account][1:]:
+                cur_idx = queue.popleft()
+                visited.add(cur_idx)
+
+                for email in accounts[cur_idx][1:]:
                     emails.add(email)
-                    for account in email_to_account[email]:
-                        if account in visited:
+                    for next_idx in email_to_accounts[email]:
+                        if next_idx in visited:
                             continue
-                        queue.append(account)
-                        visited.add(account)
-            result.append([accounts[i][0]] + sorted(list(emails)))
+                        queue.append(next_idx)
+                        visited.add(next_idx)
+            result.append([name] + sorted(list(emails)))
+
         return result
