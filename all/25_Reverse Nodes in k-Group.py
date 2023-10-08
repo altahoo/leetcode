@@ -16,25 +16,23 @@ class Solution:
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
         dummy = ListNode(0, head)
         start = dummy
-        
+
         while True:
             end = self.getEndNode(start, k)
             if not end:
                 return dummy.next
-            next = end.next
+            new_start = end.next
 
-            # start: one node before the current group, 
-            # end: the last node of the current group
-            # next: one node after the current group
-            # Reverse the current k group
-            prev, curr = end.next, start.next
-            while curr != next:
+            curr, next = start.next, end.next
+            while curr != new_start:
                 tmp = curr.next
-                curr.next = prev
-                prev = curr
+                curr.next = next
+                next = curr
                 curr = tmp
             
-            start.next, start = end, start.next
+            tmp = start.next
+            start.next = end
+            start = tmp
         return dummy.next
     
     def getEndNode(self, node, k):
