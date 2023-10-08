@@ -2,16 +2,10 @@
 
 # [1, 2, 3, 4, 5]  k = 3
 
-# pre: one node before the current k group
-# next: one node after the current k group
-
 # -1->1->2->3->4->5
 #  |        |  |
-# pre      cur next
+# start    end next
 
-# -1->3->2->1->4->5
-#     |     |  |
-#    cur   pre next
 
 # Definition for singly-linked list.
 # class ListNode:
