@@ -8,10 +8,10 @@
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        min_prices = []
-        cur_min = float('inf')
+        min_price = float('inf')
+        profit = 0
         for price in prices:
-            cur_min = min(cur_min, price)
-            min_prices.append(cur_min)
+            min_price = min(min_price, price)
+            profit = max(profit, price - min_price)
          
-        return max([(price - min_price) for price, min_price in zip(prices, min_prices)])
+        return profit
