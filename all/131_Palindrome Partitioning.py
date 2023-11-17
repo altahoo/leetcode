@@ -6,14 +6,7 @@ class Solution:
     def partition(self, s: str) -> List[List[str]]:
         
         def is_palindrome(str):
-            left, right = 0, len(str) - 1
-            while left < right and str[left] == str[right]:
-                left += 1
-                right -= 1
-            
-            if left >= right:
-                return True
-            return False
+            return str == str[::-1]
 
         if not s:
             return [[]]
