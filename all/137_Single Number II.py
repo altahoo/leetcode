@@ -6,7 +6,7 @@
 
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
-        ones, twos = 0, 0  # The bits that have appeared once and twice
+        ones, twos = 0, 0  # The bits that have appeared odd and even times
         for num in nums:
             ones ^= (num & ~twos)
             twos ^= (num & ~ones)
