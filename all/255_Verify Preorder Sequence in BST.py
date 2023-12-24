@@ -5,16 +5,13 @@
 class Solution:
     def verifyPreorder(self, preorder: List[int]) -> bool:
 
-        min_limit = -float('inf')
-        stack = []
-        
+        min_val = -float('inf') # the value of the root
+        stack = [] # store the left branch
+
         for num in preorder:
             while stack and stack[-1] < num:
-                min_limit = stack.pop()
-                
-            if num <= min_limit:
+                min_val = stack.pop()
+            if num <= min_val:
                 return False
-            
             stack.append(num)
-        
         return True
