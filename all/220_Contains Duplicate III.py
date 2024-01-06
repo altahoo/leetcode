@@ -28,4 +28,3 @@ class Solution:
                 del buckets[nums[i - indexDiff] // size]
         
         return False
-
