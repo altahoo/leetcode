@@ -30,3 +30,4 @@ class Solution:
                 cur = 0
                 op = c
         return sum(stack)
+
