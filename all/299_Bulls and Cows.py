@@ -21,6 +21,8 @@ class Solution:
             if s == g:
                 a += 1
                 s_counter[s] -= 1
+                if s_counter[s] < 0:
+                    b -= 1
             elif s_counter[g] > 0:
                 b += 1
                 s_counter[g] -= 1
