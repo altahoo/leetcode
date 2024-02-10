@@ -61,6 +61,7 @@ class Solution:
 
 
 
+# Improve is_bst() from O(n^2) to O(n)
 class Solution:
     def is_bst(self, node):
         if not node:
@@ -89,3 +90,6 @@ class Solution:
         
         if self.is_bst(root):
             return count_nodes(root)
+
+
+# Improve # 2, 不太懂
